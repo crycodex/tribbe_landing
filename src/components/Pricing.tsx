@@ -17,8 +17,7 @@ const plans = [
       "Biblioteca de ejercicios"
     ],
     cta: "Comenzar Gratis",
-    popular: false,
-    gradient: "from-secondary to-muted"
+    popular: false
   },
   {
     name: "Premium",
@@ -37,21 +36,18 @@ const plans = [
       "Soporte prioritario"
     ],
     cta: "Ir Premium",
-    popular: true,
-    gradient: "from-primary to-orange-600"
+    popular: true
   }
 ];
 
 export const Pricing = () => {
   return (
-    <section id="pricing" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-transparent" />
-      
-      <div className="container px-4 relative z-10">
+    <section id="pricing" className="py-24">
+      <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold">
             Elige tu{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-primary">
               plan
             </span>
           </h2>
@@ -64,14 +60,14 @@ export const Pricing = () => {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`p-8 relative overflow-hidden ${
+              className={`p-8 relative ${
                 plan.popular
-                  ? "border-primary/50 shadow-glow scale-105"
-                  : "border-border/50"
-              } bg-card/50 backdrop-blur-sm`}
+                  ? "border-primary shadow-lg"
+                  : ""
+              }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                   Más Popular
                 </div>
               )}
@@ -85,7 +81,7 @@ export const Pricing = () => {
 
                 {/* Price */}
                 <div className="flex items-baseline gap-1">
-                  <span className={`text-5xl font-bold bg-gradient-to-br ${plan.gradient} bg-clip-text text-transparent`}>
+                  <span className="text-5xl font-bold text-foreground">
                     {plan.price}
                   </span>
                   {plan.period && (
@@ -97,7 +93,7 @@ export const Pricing = () => {
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className={`p-1 rounded-full bg-gradient-to-br ${plan.gradient} mt-0.5`}>
+                      <div className="p-1 rounded-full bg-primary mt-0.5">
                         <Check className="h-3 w-3 text-white" />
                       </div>
                       <span className="text-sm text-muted-foreground">{feature}</span>
@@ -109,9 +105,10 @@ export const Pricing = () => {
                 <Button
                   className={`w-full ${
                     plan.popular
-                      ? "bg-gradient-primary hover:shadow-glow"
-                      : "bg-secondary hover:bg-secondary/80"
-                  } transition-all duration-300`}
+                      ? ""
+                      : "variant-outline"
+                  }`}
+                  variant={plan.popular ? "default" : "outline"}
                   size="lg"
                 >
                   {plan.cta}

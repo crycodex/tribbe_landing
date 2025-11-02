@@ -7,26 +7,22 @@ const values = [
   {
     icon: Heart,
     title: "Comunidad Primero",
-    description: "Creemos que el fitness es mejor cuando se comparte. Nuestra plataforma pone la comunidad en el centro de todo.",
-    gradient: "from-primary to-orange-600"
+    description: "Creemos que el fitness es mejor cuando se comparte. Nuestra plataforma pone la comunidad en el centro de todo."
   },
   {
     icon: Target,
     title: "Objetivos Reales",
-    description: "No vendemos sueños imposibles. Ayudamos a establecer metas alcanzables y medibles con progreso verificable.",
-    gradient: "from-accent to-cyan-500"
+    description: "No vendemos sueños imposibles. Ayudamos a establecer metas alcanzables y medibles con progreso verificable."
   },
   {
     icon: Users,
     title: "Transparencia Total",
-    description: "Código abierto, roadmap público y comunicación directa con nuestra comunidad. Sin secretos.",
-    gradient: "from-primary to-pink-600"
+    description: "Código abierto, roadmap público y comunicación directa con nuestra comunidad. Sin secretos."
   },
   {
     icon: Zap,
     title: "Innovación Constante",
-    description: "Escuchamos a nuestra tribu y evolucionamos rápido. Las mejores ideas vienen de quienes usan la app.",
-    gradient: "from-accent to-blue-600"
+    description: "Escuchamos a nuestra tribu y evolucionamos rápido. Las mejores ideas vienen de quienes usan la app."
   }
 ];
 
@@ -50,7 +46,7 @@ const About = () => {
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
             <h1 className="text-5xl md:text-6xl font-bold">
               Sobre{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-primary">
                 Tribbe
               </span>
             </h1>
@@ -62,9 +58,11 @@ const About = () => {
           </div>
 
           {/* Mission */}
-          <Card className="max-w-4xl mx-auto p-8 mb-16 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50">
+          <Card className="max-w-4xl mx-auto p-8 mb-16">
             <div className="text-center space-y-4">
-              <div className="text-5xl mb-4">🎯</div>
+              <div className="inline-flex p-4 rounded-full bg-primary/10 mb-4">
+                <Target className="h-8 w-8 text-primary" />
+              </div>
               <h2 className="text-3xl font-bold">Nuestra Misión</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Hacer que el fitness sea social, divertido y verificable. Queremos que cada 
@@ -78,7 +76,7 @@ const About = () => {
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-12">
               Nuestros{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
+              <span className="text-primary">
                 Valores
               </span>
             </h2>
@@ -88,10 +86,10 @@ const About = () => {
                 return (
                   <Card
                     key={index}
-                    className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 hover:shadow-card"
+                    className="p-6 hover:shadow-lg transition-shadow"
                   >
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${value.gradient} mb-4`}>
-                      <Icon className="h-6 w-6 text-white" />
+                    <div className="inline-flex p-3 rounded-lg bg-primary/10 mb-4">
+                      <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="text-xl font-bold mb-2">{value.title}</h3>
                     <p className="text-muted-foreground">{value.description}</p>
@@ -105,7 +103,7 @@ const About = () => {
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-12">
               El{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-primary">
                 Equipo
               </span>
             </h2>
@@ -113,7 +111,7 @@ const About = () => {
               {team.map((member, index) => (
                 <Card
                   key={index}
-                  className="p-8 bg-card/50 backdrop-blur-sm border-border/50"
+                  className="p-8"
                 >
                   <div className="flex items-start gap-6">
                     <div className="text-6xl">{member.avatar}</div>
@@ -129,10 +127,10 @@ const About = () => {
           </div>
 
           {/* Story */}
-          <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-secondary/50 to-card/50 backdrop-blur-sm border-border/50">
+          <Card className="max-w-4xl mx-auto p-8 bg-secondary/20">
             <h2 className="text-3xl font-bold mb-6 text-center">
               La{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
+              <span className="text-primary">
                 Historia
               </span>
             </h2>
@@ -163,7 +161,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:cristhian@tribbe.app"
-                className="px-6 py-3 bg-gradient-primary text-white rounded-lg font-medium hover:shadow-glow transition-all"
+                className="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-all"
               >
                 Envíanos un email
               </a>
@@ -171,7 +169,7 @@ const About = () => {
                 href="https://github.com/tu-usuario/tribbe_app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg font-medium hover:bg-card/80 transition-all"
+                className="px-6 py-3 bg-secondary border rounded-lg font-medium hover:bg-secondary/80 transition-all"
               >
                 Ver en GitHub
               </a>
