@@ -5,7 +5,7 @@ import appMockup from "@/assets/app-mockup.png";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">{/* Added pt-16 for navbar space */}
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-hero" />
       
