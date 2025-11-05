@@ -1,10 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import logo_light from "@/assets/icon/remove.png";
 import logo_dark from "@/assets/icon/remove_dark.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +18,12 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
 
-  const navItems = [
+  const mainNavItems = [
     { label: "Características", href: "/#features" },
     { label: "Precios", href: "/#pricing" },
+  ];
+
+  const moreNavItems = [
     { label: "Roadmap", href: "/roadmap" },
     { label: "Nosotros", href: "/about" },
   ];
@@ -72,7 +81,7 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
+            {mainNavItems.map((item) => (
               item.href.startsWith("/#") ? (
                 <a
                   key={item.label}
@@ -99,6 +108,35 @@ export const Navbar = () => {
                 </Link>
               )
             ))}
+            
+            {/* Dropdown "Más" */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-1 rounded-full hover:bg-secondary/50 h-auto"
+                >
+                  Más
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {moreNavItems.map((item) => (
+                  <DropdownMenuItem key={item.label} asChild>
+                    <Link
+                      to={item.href}
+                      className={`w-full cursor-pointer ${
+                        location.pathname === item.href
+                          ? "text-primary font-medium"
+                          : ""
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           <div className="flex items-center gap-4">
@@ -132,7 +170,7 @@ export const Navbar = () => {
         {isOpen && (
           <div className="md:hidden border-t bg-background/95 backdrop-blur-md rounded-b-2xl">
             <div className="flex flex-col gap-2 p-4">
-              {navItems.map((item) => (
+              {mainNavItems.map((item) => (
                 item.href.startsWith("/#") ? (
                   <a
                     key={item.label}
@@ -160,6 +198,25 @@ export const Navbar = () => {
                   </Link>
                 )
               ))}
+              
+              {/* Items del menú "Más" en móvil */}
+              <div className="border-t pt-2 mt-2">
+                {moreNavItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-secondary/50 block ${
+                      location.pathname === item.href
+                        ? "text-primary bg-secondary"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              
               <Button size="sm" className="w-full mt-2 rounded-full">
                 Descargar
               </Button>
