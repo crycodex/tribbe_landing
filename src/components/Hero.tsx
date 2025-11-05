@@ -2,14 +2,26 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import heroImage from "@/assets/hero-workout.jpg";
 import appMockup from "@/assets/app-mockup.png";
+import Ballpit from "@/components/Ballpit";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24">
-      <div className="container px-4 py-20">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+      {/* Ballpit Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Ballpit
+          count={100}
+          gravity={0.01}
+          friction={0.99}
+          wallBounce={0.95}
+          followCursor={false}
+        />
+      </div>
+      
+      <div className="container px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
-          <div className="space-y-8">
+          <div className="space-y-8 backdrop-blur-md bg-background/50 p-8 rounded-lg">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border">
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-sm font-medium text-muted-foreground">Encuentra tu tribu</span>
@@ -57,7 +69,7 @@ export const Hero = () => {
             <img 
               src={appMockup} 
               alt="Tribbe App Interface" 
-              className="w-full max-w-md mx-auto"
+              className=" max-w-md max-h-[80vh] mx-auto"
             />
           </div>
         </div>

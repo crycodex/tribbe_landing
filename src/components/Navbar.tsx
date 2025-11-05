@@ -71,7 +71,7 @@ export const Navbar = () => {
 
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
-      <div className="bg-background/95 backdrop-blur-md border rounded-full shadow-lg">
+      <div className="bg-background/40 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-full shadow-2xl shadow-primary/5">
         <div className="flex items-center justify-between h-14 px-6">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold text-primary">
@@ -168,7 +168,7 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden border-t bg-background/95 backdrop-blur-md rounded-b-2xl">
+          <div className="md:hidden border-t border-white/10 bg-background/40 backdrop-blur-xl rounded-b-2xl">
             <div className="flex flex-col gap-2 p-4">
               {mainNavItems.map((item) => (
                 item.href.startsWith("/#") ? (
