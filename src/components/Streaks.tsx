@@ -19,7 +19,7 @@ export const Streaks = () => {
                 {/* Streak header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-full bg-gradient-primary">
+                    <div className="p-3 rounded-full bg-orange-500">
                       <Flame className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -46,7 +46,7 @@ export const Streaks = () => {
                         <div 
                           className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all duration-300 ${
                             completedDays[index]
-                              ? "bg-gradient-primary shadow-glow scale-110"
+                              ? "bg-gradient-primary shadow-glow scale-190"
                               : "bg-muted/30 border border-border/50"
                           }`}
                         >
@@ -71,7 +71,7 @@ export const Streaks = () => {
 
             <h2 className="text-4xl md:text-5xl font-bold">
               Mantén tu{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
+              <span className="bg-orange-500 bg-clip-text text-transparent">
                 racha activa
               </span>
             </h2>
