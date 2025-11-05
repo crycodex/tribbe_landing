@@ -58,22 +58,12 @@ export const Streaks = () => {
                     ))}
                   </div>
                 </div>
-
-                {/* Character evolution preview */}
-                <div className="pt-6 border-t border-border/50">
-                  <div className="text-center space-y-2">
-                    <div className="text-6xl animate-float">💪</div>
-                    <p className="text-sm text-muted-foreground">
-                      Tu personaje evoluciona con cada entrenamiento
-                    </p>
-                  </div>
-                </div>
               </div>
             </Card>
           </div>
 
           {/* Right - Description */}
-          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          <div className="space-y-6 animate-slide-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm border border-accent/20">
               <Flame className="h-4 w-4 text-accent" />
               <span className="text-sm font-medium">Gamificación</span>

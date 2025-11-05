@@ -16,7 +16,7 @@ export const CTA = () => {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <Smartphone className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">Próximamente en iOS y Android</span>
+                <span className="text-sm font-medium">Disponible en iOS, Proximamente en Android</span>
               </div>
 
               <h2 className="text-4xl md:text-6xl font-bold">
@@ -53,7 +53,7 @@ export const CTA = () => {
             {/* Social proof */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8 border-t border-border/50">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">2,000+</div>
+                <div className="text-3xl font-bold text-primary">1,000+</div>
                 <div className="text-sm text-muted-foreground">En lista de espera</div>
               </div>
               <div className="text-center">

@@ -3,6 +3,8 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
+import logo_light from "@/assets/icon/remove.png";
+import logo_dark from "@/assets/icon/remove_dark.png";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +13,6 @@ export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
-    { label: "Inicio", href: "/" },
     { label: "Características", href: "/#features" },
     { label: "Precios", href: "/#pricing" },
     { label: "Roadmap", href: "/roadmap" },
@@ -65,7 +66,8 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-14 px-6">
           {/* Logo */}
           <Link to="/" className="text-xl font-bold text-primary">
-            Tribbe
+            <img 
+            src={theme === 'light' ? logo_light : logo_dark} alt="Tribbe" className="h-10 " />
           </Link>
 
           {/* Desktop Navigation */}

@@ -8,13 +8,15 @@ const plans = [
     price: "Gratis",
     description: "Perfecto para empezar tu viaje fitness",
     features: [
-      "Hasta 5 amigos",
       "1 gimnasio",
       "Registro de entrenamientos",
       "Historial de 30 días",
       "Feed social básico",
       "Rachas semanales",
-      "Biblioteca de ejercicios"
+      "Biblioteca de ejercicios",
+      "Perfil personalizado",
+      "Anuncios"
+
     ],
     cta: "Comenzar Gratis",
     popular: false
@@ -35,7 +37,6 @@ const plans = [
       "Badges especiales",
       "Soporte prioritario"
     ],
-    cta: "Ir Premium",
     popular: true
   }
 ];
@@ -102,17 +103,15 @@ export const Pricing = () => {
                 </ul>
 
                 {/* CTA */}
-                <Button
-                  className={`w-full ${
-                    plan.popular
-                      ? ""
-                      : "variant-outline"
-                  }`}
-                  variant={plan.popular ? "default" : "outline"}
-                  size="lg"
-                >
-                  {plan.cta}
-                </Button>
+                {!plan.popular && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full bg-primary text-white"
+                  >
+                    {plan.cta}
+                  </Button>
+                )}
               </div>
             </Card>
           ))}

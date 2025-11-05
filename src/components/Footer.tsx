@@ -54,22 +54,22 @@ export const Footer = () => {
           
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a href="https://instagram.com/tribbe.app" target="_blank" rel="noopener noreferrer">
+              <a title="Instagram" href="https://instagram.com/tribbe.app" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a href="https://twitter.com/tribbe_app" target="_blank" rel="noopener noreferrer">
+              <a title="Twitter" href="https://twitter.com/tribbe_app" target="_blank" rel="noopener noreferrer">
                 <Twitter className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a href="https://github.com/cristhianrecalde/tribbe" target="_blank" rel="noopener noreferrer">
+              <a title="GitHub" href="https://github.com/cristhianrecalde/tribbe" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a href="mailto:hello@tribbe.app">
+              <a title="Email" href="mailto:hello@tribbe.app">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>

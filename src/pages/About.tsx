@@ -28,49 +28,21 @@ const values = [
 ];
 
 const stats = [
-  { label: "Usuarios Activos", value: "10K+", icon: Users },
-  { label: "Entrenamientos Registrados", value: "500K+", icon: Dumbbell },
-  { label: "Gimnasios Conectados", value: "150+", icon: MapPin },
-  { label: "Crecimiento Mensual", value: "25%", icon: TrendingUp }
+  { label: "Usuarios Activos", value: "100+", icon: Users },
+  { label: "Entrenamientos Registrados", value: "100+", icon: Dumbbell },
+  { label: "Gimnasios Conectados", value: "15+", icon: MapPin },
+  { label: "Crecimiento Mensual", value: "2%", icon: TrendingUp }
 ];
 
-const timeline = [
-  {
-    date: "Oct 2024",
-    title: "Idea y Concepto",
-    description: "Nace la idea de crear una red social fitness que combine tracking con comunidad."
-  },
-  {
-    date: "Nov 2024",
-    title: "Desarrollo MVP",
-    description: "Inicio del desarrollo con Flutter y Firebase. Primeras funcionalidades básicas."
-  },
-  {
-    date: "Dic 2024",
-    title: "Beta Testing",
-    description: "Lanzamiento de beta cerrada con 50 usuarios para probar funcionalidades core."
-  },
-  {
-    date: "Ene 2025",
-    title: "Lanzamiento Público",
-    description: "Apertura al público con funcionalidades sociales y sistema de rachas."
-  },
-  {
-    date: "Q2 2025",
-    title: "Expansión",
-    description: "Integración con gimnasios y sistema de competencias por ubicación."
-  }
-];
 
 const team = [
   {
     name: "Cristhian Recalde",
-    role: "Founder & Lead Developer",
-    avatar: "👨‍💻",
+    role: "Founder & Full Stack Developer",
     bio: "Desarrollador Flutter apasionado por el fitness. Creé Tribbe porque no encontraba una app que combinara social + tracking de forma simple.",
-    location: "Colombia",
+    location: "Ecuador",
     experience: "5+ años",
-    skills: ["Flutter", "Firebase", "UI/UX", "Product Design"]
+    skills: ["Flutter", "Firebase", "UI/UX", "Product Design", "DevOps"]
   }
 ];
 
@@ -84,8 +56,7 @@ const About = () => {
           {/* Header */}
           <div className="text-center max-w-4xl mx-auto mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border mb-4">
-              <Coffee className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-muted-foreground">Construido con pasión desde Colombia</span>
+              <span className="text-sm font-medium text-muted-foreground">🇪🇨 Construido con pasión desde Ecuador</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold">
@@ -151,7 +122,6 @@ const About = () => {
                   motivación y celebrar cada pequeña victoria juntos."
                 </blockquote>
                 <div className="flex items-center gap-3">
-                  <div className="text-2xl">👨‍💻</div>
                   <div>
                     <div className="font-semibold">Cristhian Recalde</div>
                     <div className="text-sm text-muted-foreground">Founder</div>
@@ -188,42 +158,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Timeline */}
-          <div className="mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Nuestro{" "}
-              <span className="text-primary">
-                Viaje
-              </span>
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-border"></div>
-                
-                <div className="space-y-8">
-                  {timeline.map((item, index) => (
-                    <div key={index} className="relative flex items-start gap-6 md:gap-8">
-                      {/* Timeline dot */}
-                      <div className="absolute left-2 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg"></div>
-                      
-                      {/* Content */}
-                      <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:ml-auto'} ml-8 md:ml-0 md:w-1/2`}>
-                        <Card className="p-6">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Calendar className="h-4 w-4 text-primary" />
-                            <span className="text-sm font-medium text-primary">{item.date}</span>
-                          </div>
-                          <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                          <p className="text-muted-foreground text-sm">{item.description}</p>
-                        </Card>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Team */}
           <div className="mb-20">
@@ -237,7 +171,6 @@ const About = () => {
               {team.map((member, index) => (
                 <Card key={index} className="p-8">
                   <div className="flex flex-col md:flex-row items-start gap-6">
-                    <div className="text-6xl">{member.avatar}</div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
                       <p className="text-primary mb-3">{member.role}</p>

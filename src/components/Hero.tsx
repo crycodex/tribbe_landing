@@ -12,19 +12,19 @@ export const Hero = () => {
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border">
               <div className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-sm font-medium text-muted-foreground">Instagram para el Gimnasio</span>
+              <span className="text-sm font-medium text-muted-foreground">Encuentra tu tribu</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Entrena.{" "}
+              Entrena,{" "}
               <span className="text-primary">
-                Compite.
+                Compite y
               </span>{" "}
               Conecta.
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg">
-              La red social fitness que convierte cada entrenamiento en una experiencia compartida. 
+              La app social fitness que convierte cada entrenamiento en una experiencia compartida. 
               Registra tus workouts con fotos, compite con amigos y mantén rachas semanales.
             </p>
 
@@ -32,25 +32,21 @@ export const Hero = () => {
               <Button size="lg" className="text-lg group">
                 <Download className="mr-2 h-5 w-5" />
                 Descargar App
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg">
-                Ver Demo
               </Button>
             </div>
 
             {/* Stats */}
             <div className="flex gap-8 pt-8 border-t">
               <div>
-                <div className="text-2xl font-bold text-primary">10K+</div>
+                <div className="text-2xl font-bold text-primary">100+</div>
                 <div className="text-sm text-muted-foreground">Usuarios Activos</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">500K+</div>
+                <div className="text-2xl font-bold text-foreground">100+</div>
                 <div className="text-sm text-muted-foreground">Entrenamientos</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">98%</div>
+                <div className="text-2xl font-bold text-primary">89%</div>
                 <div className="text-sm text-muted-foreground">Satisfacción</div>
               </div>
             </div>
