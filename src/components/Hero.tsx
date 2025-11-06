@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
-import heroImage from "@/assets/hero-workout.jpg";
+import { Download } from "lucide-react";
 import appMockup from "@/assets/app-mockup.png";
 import Ballpit from "@/components/Ballpit";
+import CountUp from "@/components/CountUp";
 
 export const Hero = () => {
   return (
@@ -23,7 +23,7 @@ export const Hero = () => {
           {/* Left content */}
           <div className="space-y-8 backdrop-blur-md bg-background/50 p-8 rounded-lg">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border">
-              <div className="w-2 h-2 rounded-full bg-primary" />
+              <div className="w-2 h-2 rounded-full bg-green-400" />
               <span className="text-sm font-medium text-muted-foreground">Encuentra tu tribu</span>
             </div>
 
@@ -50,15 +50,21 @@ export const Hero = () => {
             {/* Stats */}
             <div className="flex gap-8 pt-8 border-t">
               <div>
-                <div className="text-2xl font-bold text-primary">100+</div>
+                <div className="text-2xl font-bold text-primary">
+                  <CountUp from={0} to={100} duration={2} separator="," />+
+                </div>
                 <div className="text-sm text-muted-foreground">Usuarios Activos</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">100+</div>
+                <div className="text-2xl font-bold text-foreground">
+                  <CountUp from={0} to={100} duration={2} separator="," />+
+                </div>
                 <div className="text-sm text-muted-foreground">Entrenamientos</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">89%</div>
+                <div className="text-2xl font-bold text-primary">
+                  <CountUp from={0} to={89} duration={2} />%
+                </div>
                 <div className="text-sm text-muted-foreground">Satisfacción</div>
               </div>
             </div>

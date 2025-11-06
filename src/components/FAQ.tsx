@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { HelpCircle, MessageCircleQuestion } from "lucide-react";
 
 const faqs = [
   {
@@ -53,9 +54,13 @@ export const FAQ = () => {
     <section className="py-24">
       <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <MessageCircleQuestion className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Centro de ayuda</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold">
             Preguntas{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-primary">
               Frecuentes
             </span>
           </h2>
@@ -70,17 +75,44 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg px-6 hover:bg-card/80 transition-colors"
+                className="group bg-card/70 backdrop-blur-md border-2 border-border/50 rounded-xl px-6 hover:bg-card/90 hover:border-primary/40 transition-all duration-300 hover:shadow-lg overflow-hidden"
               >
-                <AccordionTrigger className="text-left hover:no-underline">
-                  <span className="font-semibold">{faq.question}</span>
+                <AccordionTrigger className="text-left hover:no-underline py-5">
+                  <div className="flex items-start gap-3 w-full">
+                    <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0 mt-0.5">
+                      <HelpCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="font-semibold text-lg group-hover:text-primary transition-colors">
+                      {faq.question}
+                    </span>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-muted-foreground pl-11 pr-4 pb-5 text-base leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        {/* CTA adicional */}
+        <div className="text-center mt-12 p-8 rounded-2xl bg-primary/5 backdrop-blur-sm border border-primary/20 max-w-2xl mx-auto">
+          <h3 className="text-2xl font-bold mb-2">¿Tienes más preguntas?</h3>
+          <p className="text-muted-foreground mb-4">
+            Estamos aquí para ayudarte. Contáctanos y responderemos todas tus dudas.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a 
+              href="mailto:support@tribbe.app" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition-all hover:shadow-lg"
+            >
+              <MessageCircleQuestion className="h-5 w-5" />
+              Enviar mensaje
+            </a>
+            <span className="text-sm text-muted-foreground">
+              Respuesta en menos de 24 horas
+            </span>
+          </div>
         </div>
       </div>
     </section>
