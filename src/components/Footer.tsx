@@ -8,7 +8,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 export const Footer = () => {
   const { theme } = useTheme();
   return (
-    <footer className="py-12 border-t">
+    <footer className="py-12 border-t backdrop-blur-3xl">
       <div className="container px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -58,13 +58,8 @@ export const Footer = () => {
           
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a title="Instagram" href="https://instagram.com/tribbe.app" target="_blank" rel="noopener noreferrer">
+              <a title="Instagram" href="https://www.instagram.com/cry.code" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a title="Twitter" href="https://twitter.com/tribbe_app" target="_blank" rel="noopener noreferrer">
-                <Twitter className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
