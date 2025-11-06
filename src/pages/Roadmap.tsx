@@ -41,7 +41,7 @@ const phases = [
   },
   {
     phase: "Gamificación",
-    period: "Q3 2025",
+    period: "Q3 2026",
     status: "in-progress",
     description: "Motivación a través de juegos y recompensas",
     items: [
@@ -55,7 +55,7 @@ const phases = [
   },
   {
     phase: "Gimnasios & Competencias",
-    period: "Q4 2025",
+    period: "Q4 2026",
     status: "planned",
     description: "Conectando comunidades físicas con competencias digitales",
     items: [
@@ -70,7 +70,7 @@ const phases = [
   },
   {
     phase: "Optimización & Premium",
-    period: "Q1 2026",
+    period: "Q1 2027",
     status: "planned",
     description: "Funcionalidades avanzadas y modelo de negocio sostenible",
     items: [
@@ -87,8 +87,8 @@ const phases = [
 
 const stats = [
   { label: "Fases Completadas", value: "2/5", icon: CheckCircle2 },
-  { label: "En Desarrollo", value: "1", icon: Clock },
-  { label: "Funcionalidades", value: "40+", icon: Target }
+  { label: "En Desarrollo", value: "2", icon: Clock },
+  { label: "Funcionalidades", value: "30+", icon: Target }
 ];
 
 const getStatusIcon = (status: string) => {
@@ -323,7 +323,9 @@ const Roadmap = () => {
               </p>
               <Button size="lg" className="text-base font-semibold px-8 shadow-lg hover:shadow-xl transition-all">
                 <Mail className="mr-2 h-5 w-5" />
-                Contactar Equipo
+                <a href="mailto:isnotcristhian@gmail.com">
+                  Contactar Equipo
+                </a>
               </Button>
               <p className="text-sm text-muted-foreground mt-4">
                 Respuesta en menos de 24 horas
