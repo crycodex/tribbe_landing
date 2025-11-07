@@ -75,7 +75,7 @@ export const Hero = () => {
             <img 
               src={appMockup} 
               alt="Tribbe App Interface" 
-              className=" max-w-md max-h-[80vh] mx-auto"
+              className=" max-w-md max-h-[75vh] mx-auto border-2 border-gray-200 rounded-xl shadow-lg"
             />
           </div>
         </div>
