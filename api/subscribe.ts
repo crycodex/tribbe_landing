@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import WelcomeEmail from './templates/WelcomeEmail';
+import WelcomeEmail from './templates/WelcomeEmail.js';
 
 interface SubscribeRequestBody {
   email: string;
