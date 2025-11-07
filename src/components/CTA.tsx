@@ -1,9 +1,81 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Smartphone } from "lucide-react";
+import { ArrowRight, Smartphone, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { toast } from "sonner";
+
+// Schema de validación con Zod
+const subscribeSchema = z.object({
+  email: z
+    .string()
+    .min(1, "El email es requerido")
+    .email("Por favor ingresa un email válido"),
+});
+
+type SubscribeFormData = z.infer<typeof subscribeSchema>;
+
+interface ApiResponse {
+  success: boolean;
+  message: string;
+  error?: string;
+}
 
 export const CTA = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<SubscribeFormData>({
+    resolver: zodResolver(subscribeSchema),
+  });
+
+  const onSubmit = async (data: SubscribeFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: data.email }),
+      });
+
+      const result: ApiResponse = await response.json();
+
+      if (response.ok && result.success) {
+        setIsSuccess(true);
+        reset();
+        toast.success(result.message || '¡Te has unido exitosamente!', {
+          description: 'Revisa tu email para más información.',
+          duration: 5000,
+        });
+        
+        // Resetear el estado de éxito después de 5 segundos
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        toast.error(result.error || 'Error al unirse', {
+          description: result.message || 'Por favor intenta de nuevo.',
+        });
+      }
+    } catch (error) {
+      console.error('Error al enviar formulario:', error);
+      toast.error('Error de conexión', {
+        description: 'No se pudo conectar al servidor. Por favor intenta de nuevo.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background effects */}
@@ -34,17 +106,67 @@ export const CTA = () => {
 
             {/* Waitlist form */}
             <div className="max-w-md mx-auto">
-              <div className="flex gap-2">
-                <Input 
-                  type="email" 
-                  placeholder="tu@email.com"
-                  className="bg-background/50 border-border/50 text-lg py-6"
-                />
-                <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-8">
-                  Unirme
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <Input 
+                      {...register("email")}
+                      type="email" 
+                      placeholder="tu@email.com"
+                      className={`bg-background/50 border-border/50 text-lg py-6 ${
+                        errors.email ? 'border-red-500 focus-visible:ring-red-500' : ''
+                      } ${isSuccess ? 'border-green-500' : ''}`}
+                      disabled={isSubmitting}
+                      aria-invalid={errors.email ? 'true' : 'false'}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                  </div>
+                  <Button 
+                    type="submit"
+                    size="lg" 
+                    className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-8"
+                    disabled={isSubmitting || isSuccess}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : isSuccess ? (
+                      <>
+                        <CheckCircle2 className="mr-2 h-5 w-5" />
+                        ¡Listo!
+                      </>
+                    ) : (
+                      <>
+                        Unirme
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+                
+                {/* Error message */}
+                {errors.email && (
+                  <div 
+                    id="email-error"
+                    className="flex items-center gap-2 mt-2 text-sm text-red-500"
+                    role="alert"
+                  >
+                    <AlertCircle className="h-4 w-4" />
+                    <span>{errors.email.message}</span>
+                  </div>
+                )}
+                
+                {/* Success message */}
+                {isSuccess && !errors.email && (
+                  <div className="flex items-center gap-2 mt-2 text-sm text-green-500">
+                    <CheckCircle2 className="h-4 w-4" />
+                    <span>¡Bienvenido a la Tribu!</span>
+                  </div>
+                )}
+              </form>
+              
               <p className="text-sm text-muted-foreground mt-3">
                 No spam. Solo actualizaciones importantes sobre el lanzamiento.
               </p>
