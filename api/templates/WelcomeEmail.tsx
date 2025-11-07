@@ -5,7 +5,7 @@ interface WelcomeEmailProps {
   name?: string;
 }
 
-export const WelcomeEmail = ({ 
+const WelcomeEmail = ({ 
   email, 
   name 
 }: WelcomeEmailProps) => {

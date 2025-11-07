@@ -1,16 +1,14 @@
 import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { WelcomeEmail } from './templates/WelcomeEmail';
+import WelcomeEmail from './templates/WelcomeEmail';
 
 interface SubscribeRequestBody {
   email: string;
   name?: string;
 }
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+
+module.exports = async (req: VercelRequest, res: VercelResponse) => {
   // Configurar headers CORS y Content-Type
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -125,11 +123,10 @@ export default async function handler(
       details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
     });
   }
-}
+};
 
 // Función auxiliar para validar email
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
-
