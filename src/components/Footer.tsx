@@ -63,7 +63,7 @@ export const Footer = () => {
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="hover:text-primary" asChild>
-              <a title="GitHub" href="https://github.com/cristhianrecalde/tribbe" target="_blank" rel="noopener noreferrer">
+              <a title="GitHub" href="https://github.com/crycodex/tribbe_landing" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>

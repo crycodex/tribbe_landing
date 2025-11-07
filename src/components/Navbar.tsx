@@ -7,6 +7,7 @@ import logo_light from "@/assets/icon/remove.png";
 import logo_dark from "@/assets/icon/remove_dark.png";
 import { gsap } from "gsap";
 import type { CSSProperties } from "react";
+import { Github } from "lucide-react";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -272,6 +273,17 @@ export const Navbar = () => {
             aria-label="Toggle theme"
           >
             {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </button>
+
+          {/* github bubble */}
+          <button
+            type="button"
+            className="bubble inline-flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-[0_4px_16px_rgba(0,0,0,0.12)] w-12 h-12 md:w-14 md:h-14 border-0 cursor-pointer p-0 will-change-transform hover:scale-110 transition-transform"
+            style={{ background: menuBg }}
+            aria-label="GitHub"
+            onClick={() => window.open('https://github.com/crycodex/tribbe_landing', '_blank')}
+          >
+            <Github className="h-5 w-5" />
           </button>
 
           {/* Menu Toggle Bubble */}
