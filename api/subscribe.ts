@@ -7,8 +7,7 @@ interface SubscribeRequestBody {
   name?: string;
 }
 
-
-module.exports = async (req: VercelRequest, res: VercelResponse) => {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Configurar headers CORS y Content-Type
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -123,7 +122,7 @@ module.exports = async (req: VercelRequest, res: VercelResponse) => {
       details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
     });
   }
-};
+}
 
 // Función auxiliar para validar email
 function isValidEmail(email: string): boolean {
