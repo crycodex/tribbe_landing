@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 
 interface WelcomeEmailProps {
   email: string;
   name?: string;
 }
 
-export const WelcomeEmail: React.FC<WelcomeEmailProps> = ({ 
+export const WelcomeEmail = ({ 
   email, 
   name 
-}) => {
+}: WelcomeEmailProps) => {
   const displayName = name || email.split('@')[0];
 
   return (
@@ -128,25 +128,25 @@ const styles = {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     margin: 0,
     padding: 0,
-  } as React.CSSProperties,
+  },
   
   container: {
     width: '100%',
     maxWidth: '600px',
     margin: '0 auto',
     backgroundColor: '#0a0a0a',
-  } as React.CSSProperties,
+  },
   
   content: {
     padding: '40px 20px',
-  } as React.CSSProperties,
+  },
   
   header: {
     textAlign: 'center' as const,
     marginBottom: '40px',
     paddingBottom: '20px',
     borderBottom: '2px solid #FFD700',
-  } as React.CSSProperties,
+  },
   
   logo: {
     fontSize: '36px',
@@ -155,20 +155,20 @@ const styles = {
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     margin: '0 0 8px 0',
-  } as React.CSSProperties,
+  },
   
   tagline: {
     color: '#888',
     fontSize: '14px',
     margin: 0,
-  } as React.CSSProperties,
+  },
   
   main: {
     backgroundColor: '#1a1a1a',
     borderRadius: '12px',
     padding: '32px',
     marginBottom: '24px',
-  } as React.CSSProperties,
+  },
   
   title: {
     color: '#ffffff',
@@ -176,14 +176,14 @@ const styles = {
     fontWeight: 'bold',
     marginTop: 0,
     marginBottom: '24px',
-  } as React.CSSProperties,
+  },
   
   text: {
     color: '#cccccc',
     fontSize: '16px',
     lineHeight: '1.6',
     marginBottom: '16px',
-  } as React.CSSProperties,
+  },
   
   featuresBox: {
     backgroundColor: '#0a0a0a',
@@ -191,7 +191,7 @@ const styles = {
     padding: '24px',
     margin: '24px 0',
     border: '1px solid #FFD700',
-  } as React.CSSProperties,
+  },
   
   featuresTitle: {
     color: '#FFD700',
@@ -199,38 +199,38 @@ const styles = {
     fontWeight: 'bold',
     marginTop: 0,
     marginBottom: '16px',
-  } as React.CSSProperties,
+  },
   
   featuresList: {
     listStyle: 'none',
     padding: 0,
     margin: 0,
-  } as React.CSSProperties,
+  },
   
   featureItem: {
     color: '#cccccc',
     fontSize: '15px',
     lineHeight: '1.8',
     marginBottom: '12px',
-  } as React.CSSProperties,
+  },
   
   updatesList: {
     listStyle: 'none',
     padding: 0,
     margin: '16px 0',
-  } as React.CSSProperties,
+  },
   
   updateItem: {
     color: '#cccccc',
     fontSize: '15px',
     lineHeight: '1.8',
     marginBottom: '8px',
-  } as React.CSSProperties,
+  },
   
   buttonContainer: {
     textAlign: 'center' as const,
     marginTop: '32px',
-  } as React.CSSProperties,
+  },
   
   button: {
     display: 'inline-block',
@@ -242,30 +242,30 @@ const styles = {
     borderRadius: '8px',
     textDecoration: 'none',
     transition: 'background-color 0.3s',
-  } as React.CSSProperties,
+  },
   
   footer: {
     textAlign: 'center' as const,
     paddingTop: '24px',
     borderTop: '1px solid #333',
-  } as React.CSSProperties,
+  },
   
   footerText: {
     color: '#888',
     fontSize: '14px',
     margin: '8px 0',
-  } as React.CSSProperties,
+  },
   
   footerSmall: {
     color: '#666',
     fontSize: '12px',
     margin: '16px 0 0 0',
-  } as React.CSSProperties,
+  },
   
   link: {
     color: '#FFD700',
     textDecoration: 'none',
-  } as React.CSSProperties,
+  },
 };
 
 export default WelcomeEmail;

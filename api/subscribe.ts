@@ -2,11 +2,6 @@ import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { WelcomeEmail } from './templates/WelcomeEmail';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// ID de tu audiencia en Resend (lo obtienes desde el dashboard)
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '';
-
 interface SubscribeRequestBody {
   email: string;
   name?: string;
@@ -16,6 +11,17 @@ export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
+  // Configurar headers CORS y Content-Type
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Manejar preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Solo permitir POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ 
@@ -23,6 +29,28 @@ export default async function handler(
       message: 'Solo se permiten solicitudes POST' 
     });
   }
+
+  // Verificar que las variables de entorno estén configuradas
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
+
+  if (!RESEND_API_KEY) {
+    console.error('RESEND_API_KEY no está configurada');
+    return res.status(500).json({
+      error: 'Error de configuración',
+      message: 'El servicio no está configurado correctamente. Por favor contacta al administrador.',
+    });
+  }
+
+  if (!AUDIENCE_ID) {
+    console.error('RESEND_AUDIENCE_ID no está configurada');
+    return res.status(500).json({
+      error: 'Error de configuración',
+      message: 'El servicio no está configurado correctamente. Por favor contacta al administrador.',
+    });
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
 
   try {
     const { email, name } = req.body as SubscribeRequestBody;
@@ -57,16 +85,23 @@ export default async function handler(
     }
 
     // 2. Enviar email de bienvenida
-    const emailResponse = await resend.emails.send({
-      from: 'Tribbe <onboarding@tribbe.app>',
-      to: email,
-      subject: '¡Bienvenido a la Tribu! 🎉',
-      react: WelcomeEmail({ email, name }),
-    });
+    try {
+      const emailResponse = await resend.emails.send({
+        from: 'Tribbe <onboarding@resend.dev>', // Cambiar a tu dominio verificado: onboarding@tribbe.app
+        to: email,
+        subject: '¡Bienvenido a la Tribu! 🎉',
+        react: WelcomeEmail({ email, name }),
+      });
 
-    if (emailResponse.error) {
-      console.error('Error al enviar email:', emailResponse.error);
-      // No fallar si el email no se envía, pero loguearlo
+      if (emailResponse.error) {
+        console.error('Error al enviar email:', emailResponse.error);
+        // No fallar si el email no se envía, pero loguearlo
+      } else {
+        console.log('Email enviado exitosamente:', emailResponse.data?.id);
+      }
+    } catch (emailError) {
+      console.error('Excepción al enviar email:', emailError);
+      // Continuar aunque falle el email
     }
 
     return res.status(200).json({
@@ -80,9 +115,14 @@ export default async function handler(
   } catch (error) {
     console.error('Error en subscribe:', error);
     
+    // Asegurar que siempre devolvemos JSON
+    const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+    
     return res.status(500).json({
+      success: false,
       error: 'Error del servidor',
       message: 'Hubo un problema al procesar tu solicitud. Por favor intenta de nuevo.',
+      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
     });
   }
 }
