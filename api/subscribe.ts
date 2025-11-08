@@ -173,7 +173,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 2. Enviar email de bienvenida
     try {
       const emailResponse = await resend.emails.send({
-        from: 'Tribbe <onboarding@resend.dev>', // Cambiar a tu dominio verificado: onboarding@tribbe.app
+        from: 'Tribbe <recaldecd@gmail.com>', // Cambiar cuando verifiques tu dominio
         to: email,
         subject: '¡Bienvenido a la Tribu! 🎉',
         html: getWelcomeEmailHTML(email, name),
